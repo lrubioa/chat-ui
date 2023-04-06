@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat ui</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 30% 70%;
+
+            width: 70%;
+            margin: auto;
+            border-radius: 10px;
+
+            background-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        #one {
+            display: grid;
+            background-color: #1572A1;
+
+            grid-template-rows: 75px 500px 75px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+
+            border-right: 1px solid #19376D;
+        }
+
+        #searchB {
+            border-bottom: 1px solid #19376D;
+            padding: 10px;
+
+            display: flex;
+        }
+
+        #searchIn{
+            padding: 10px;
+            margin: 10px;
+
+            width: 100%;
+        }
+
+        #userC {
+            overflow-y: scroll;
+        }
+
+        #userC::-webkit-scrollbar {
+            display: none;
+        }
+
+        .picH {
+            padding: 20px;
+            border-top: 1px solid #19376D;
+            border-bottom: 1px solid #19376D;
+
+            display: grid;
+            grid-template-columns: 68px auto;
+        }
+
+        img {
+            width: 48px;
+            height: 48px;
+            border-radius: 100%;
+        }
+
+        .pHolder {
+            display: grid;
+            grid-template-columns: auto 80px;
+        }
+
+        .namesU {
+            font-weight: bold;
+        }
+
+        .dates {
+            text-align: end;
+            font-size: 12px;
+
+        }
+
+        .textMs {
+            grid-column: 1/ 3;
+            font-size: 15px;
+        }
+
+        #two {
+            display: grid;
+            grid-template-rows: 75px 500px 75px;
+
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            border-left: 1px solid #19376D;
+        }
+
+        #userT {
+            background-color: #1572A1;
+            border-top-right-radius: 20px;
+            border-bottom: 2px solid #19376D;
+
+            padding-left: 20px;
+            padding-right: 20px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        #forUT{
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+        }
+
+        #forUT>img {
+            align-self: center;
+        }
+
+        #forUT>h1 {
+            margin-left: 15px;
+        }
+
+        #trash {
+            align-self: center;
+            display: flex;
+
+            filter: grayscale(100%) invert(1) brightness(10);
+            justify-content: end;
+        }
+
+        #addP {
+            padding: 10px;
+            padding-left: 15px;
+
+            border-top: 1px solid #19376D;
+        }
+
+        #addP>img {
+            filter: invert(1);
+        }
+
+        #msgs {
+            overflow-y: scroll;
+            padding: 20px;
+
+            background-color: #9AD0EC;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #msgs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sYou {
+            display: flex;
+            flex-direction: column;
+
+            text-align: end;
+            justify-content: end;
+            align-self: flex-end;
+            width: 70%;
+        }
+
+        .sYou>p {
+            background-color: #1572A1;
+            padding: 15px;
+
+            border-radius: 15px 15px 0px 15px;
+            width: -moz-fit-content;
+            width: fit-content;
+            align-self: flex-end;
+
+            margin-bottom: 0;
+        }
+
+        .sDarin {
+            width: 70%;
+        }
+
+        .sDarin>p {
+            background-color: #EFDAD7;
+            padding: 15px;
+            color: #373737;
+
+            border-radius: 15px 15px 15px 0px;
+            width: -moz-fit-content;
+            width: fit-content;
+            align-self: flex-end;
+
+            margin-bottom: 0;
+        }
+
+        #sendM {
+            background-color: #1572A1;
+            border-bottom-right-radius: 20px;
+
+            border-top: 2px solid #19376D;
+            display: flex;
+        }
+
+        .pHolder>p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #attach{
+            border-radius: 0;
+            filter: grayscale(100%) invert(1) brightness(10);
+            
+            padding: 15px;
+        }
+
+        #msgIn{
+            padding: 10px;
+            margin: 10px;
+            
+            width: 82%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="items" id="one">
+            <div id="searchB">
+                <img src="/luisa-temp/avatar/search.svg" alt="search for users button" id="serachBtn">
+                <input id="searchIn" placeholder="search">
+            </div>
+
+            <div id="userC">
+                <div class="picH">
+                    <div class="imgH"><img src="/luisa-temp/avatar/daryl.png" alt="daryl"></div>
+                    <div class="pHolder">
+                        <p class="namesU">Darin Austin</p>
+                        <p class="dates">Apr 16</p>
+                        <p class="textMs">This is a message</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/kim.jpeg" alt="kim">
+                    <div class="pHolder">
+                        <p class="namesU">Kim O&apos;Neil</p>
+                        <p class="dates">2 days</p>
+                        <p class="textMs">Very funny</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/john.jpeg" alt="john">
+                    <div class="pHolder">
+                        <p class="namesU">John Anderson</p>
+                        <p class="dates">1 week ago</p>
+                        <p class="textMs">Yes I love how Python does that</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/ben.png" alt="ben">
+                    <div class="pHolder">
+                        <p class="namesU">Ben Smith</p>
+                        <p class="dates">2:49 PM</p>
+                        <p class="textMs">Yeah Miami Heat are done</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/douglas.png" alt="douglas">
+                    <div class="pHolder">
+                        <p class="namesU">Douglas Johannasen</p>
+                        <p class="dates">6:14 PM</p>
+                        <p class="textMs">No it does not</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/jacob.png" alt="jacob">
+                    <div class="pHolder">
+                        <p class="namesU">Jacob Manly</p>
+                        <p class="dates">3 secs ago</p>
+                        <p class="textMs">Just be very careful doing that</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/stacey.jpeg" alt="stacey">
+                    <div class="pHolder">
+                        <p class="namesU">Stacey Wilson</p>
+                        <p class="dates">30 mins ago</p>
+                        <p class="textMs">Awesome!!! Congratulations!!!!</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/stan.jpeg" alt="stan">
+                    <div class="pHolder">
+                        <p class="namesU">Stan George</p>
+                        <p class="dates">1 week ago</p>
+                        <p class="textMs">Good job</p>
+                    </div>
+                </div>
+
+                <div class="picH"><img src="/luisa-temp/avatar/sarah.jpeg" alt="sarah">
+                    <div class="pHolder">
+                        <p class="namesU">Sarah Momes</p>
+                        <p class="dates">1 year ago</p>
+                        <p class="textMs">Thank you. I appreciate that.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="addP">
+                <img src="/luisa-temp/avatar/circle-plus-solid.svg" alt="add user button" id="plus">
+            </div>
+        </div>
+
+        <div class="items" id="two">
+            <div id="userT">
+                <div id="forUT">
+                    <img src="/luisa-temp/avatar/daryl.png" alt="daryl">
+                    <h1>Darin Austin</h1>
+                </div>
+
+                <img src="/luisa-temp/avatar/trash-logo.svg" alt="delete conversation" id="trash">
+            </div>
+
+            <div id="msgs">
+                <div class="sYou">
+                    <p>Hey Darin?</p>
+                    Apr 13
+                </div>
+                <div class="sDarin">
+                    <p>Hey mate what&apos;s up?</p>
+                    Apr 13
+                </div>
+                <div class="sYou">
+                    <p>How&apos;s it going?</p>
+                    Apr 13
+                </div>
+                <div class="sDarin">
+                    <p>I&apos;m just in the process of finishing off the last pieces of material for the course.</p>
+                    Apr 14
+                </div>
+                <div class="sYou">
+                    <p>Well we need to work out sometime soon where we really want to record our video course.</p>
+                    Apr 15
+                </div>
+                <div class="sDarin">
+                    <p>All I know is where I live it&apos;s too hard to record because of all the street noise.</p>
+                    Apr 15
+                </div>
+                <div class="sYou">
+                    <p>Maybe we can use Jim&apos;s studio.</p>
+                    Apr 15
+                </div>
+                <div class="sDarin">
+                    <p>Yeah I think it&apos;s best we do that. Otherwise things won&apos;t work well at all. I&apos;m
+                        adding more
+                        text here to test the sizing of the speech bubble and the wrapping of it too.</p>
+                    Apr 16
+                </div>
+                <div class="sYou">
+                    <p>Ok then</p>
+                    Apr 16
+                </div>
+            </div>
+
+            <div id="sendM">
+                <img src="/luisa-temp/avatar/attachment-logo.svg" alt="attachment button" id="attach">
+                <input id="msgIn" placeholder="type a message" >
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
